@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="myform">
+        <input type="text" id="name" placeholder="Enter your name">
+        <button id="submitform">submit</button>
+    </form><br><br>
+    <button id="clearinterval">clear</button>
+    <br><br><br><br>
+    <input type="text" id="search" placeholder="Search...">
+    <div class="container"></div>
+
+    <br><br>
+    <script>
+        //14. Create a form with a Name input. On submit, if the name is empty show an error message, else show “Form submitted successfully”.
+        // let form = document.getElementById("myform");
+        // let nameInput = document.getElementById("name")
+        // form.addEventListener("submit", (e) => {
+        //     e.preventDefault()
+        //     let nameInputValue = nameInput.value
+        //     if (nameInputValue == "") {
+        //         alert("error!")
+        //     } else {
+        //         alert("Form submitted successfully!")
+        //     }
+        // })
+
+        // setTimeout(() => {
+
+        //     console.log("Form submitted successfully!")
+        // }, 5000)
+
+        // let printHello = setInterval(() => {
+        //     console.log("hello")
+        // }, 5000)
+
+        // let clearIntervalBtn = document.getElementById("clearinterval")
+        // clearIntervalBtn.addEventListener("click", () => {
+        //     clearInterval(printHello)
+        // })
+
+        // async function fetchData() {
+        //     try {
+        //         let response = await fetch("https://jsonplaceholder.typicode.com/posts")
+        //         let data = await response.json()
+        //         console.log(data)
+        //         alert("Data fetched successfully!")
+        //     } catch (error) {
+        //         console.log(error)
+        //         alert("Error fetching data!")
+        //     }
+        // }
+        // fetchData()
+
+        //18. Create a list of names and a search input box. As the user types, filter the list items that match the search text.
+        let names = ["riya", "pragati", "chahat", "charu", "ridhima"];
+        let search = document.getElementById("search");
+        let container = document.querySelector(".container")
+
+        search.addEventListener("keydown", (event) => {
+            let inpValue = search.value.toLowerCase();
+            if(inpValue == ""){
+                container.innerHTML = ""
+            }
+            container.innerHTML = ""
+            let listt = [];
+            for (let i of names) {
+                if (i.includes(inpValue)) {
+                    listt.push(i)
+                }
+            }
+            listt.forEach((l) => {
+                let p = document.createElement("p")
+                p.innerText = l
+                container.appendChild(p)
+            })
+        });
+    </script>
+</body>
+
+</html>

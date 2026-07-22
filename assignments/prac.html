@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+       for (let i = 1; i <= 5; i++) {
+        console.log("For loop value:", i);
+       }
+
+       let count = 1;
+        while (count <= 5) {
+        console.log("While loop value:", count);
+        count++;
+        }
+
+        let num = 1;
+        do {
+        console.log("Do-While loop value:", num);
+        num++;
+        } while (num <= 5);
+
+        let emp = {
+        name: "riya",
+        age: 22
+        };
+        for (let key in emp) {
+        console.log(key, ":", emp[key]);
+        }
+
+        let nums = [1,2,3,4,5];
+        for (let n of nums) {
+        console.log("Number:", n);
+        }
+
+        // forEach loop
+        nums.forEach(function (value) {
+        console.log("forEach value:", value);
+        });
+
+        let squared = nums.map(function (value) {
+        return value * value;
+        });
+        console.log("Squared array:", squared);
+
+    </script>
+</body>
+</html>

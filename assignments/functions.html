@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function add() {
+            const a=15;
+            const b=20;
+            const c=a+b;
+            return c;
+        }
+        console.log(add());
+        const substract=()=>{
+            const r=2-2;
+            return r;
+        }
+        console.log(substract());
+        const multiply=(a,b)=>{
+            const c=a*b;
+            return c;
+        }
+        console.log(multiply(2,3));
+        function evenorodd(a){
+            if(a%2===0){
+                return "even";
+            } else {
+                return "odd";
+            }
+        }
+        console.log(evenorodd(4));
+        console.log(evenorodd(5));
+        function square(a){
+            return a*a;
+        }
+        console.log(square(5));
+        function minutestoSeconds(a){
+            return a*60;
+        }
+        console.log(minutestoSeconds(5));
+        function greetuser(name){
+            return "Hello "+name;
+        }
+        console.log(greetuser("John"));
+
+        //arrow function
+        const multiplyArrow=(a,b)=>a*b;
+        console.log(multiplyArrow(4,5));
+        const stringLength=(str)=>{
+            for(let i=0;i<str.length;i++){
+                return str.length;
+            }
+        }
+        console.log(stringLength("Hello World"));
+        const celciusToFahrenheit=(c)=>c*9/5+32;
+        console.log(celciusToFahrenheit(0));
+        const positiveOrNegative=(num)=>num>=0?"positive":"negative";
+        console.log(positiveOrNegative(-5));
+        const totalPrice=(price,quantity)=>price*quantity;
+        console.log(totalPrice(10,5));
+    </script>
+</body>
+</html>

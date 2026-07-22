@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .dark {
+      background-color: black;
+      color: white;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .card1,
+    .card2,
+    .card3 {
+      border: 1px solid black;
+      height: 300px;
+      width: 300px;
+      display: flex;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: magenta;
+      margin: 10px;
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="h1">welcome</h1>
+
+  <button id="btn">Click me</button> <br> <br>
+
+  <button id="toggle">Toggle Theme</button>
+
+  <div class="some">
+    <p id="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis excepturi nemo mollitia atque? Est!</p>
+    <button id="showBtn">show/hide</button>
+  </div>
+
+  <div class="counter">
+    <h3 id="count">0</h3>
+    <button id="increase">+</button>
+    <button id="decrease">-</button>
+  </div> <br><br>
+
+  <input id="in" placeholder="write something.." type="text">
+  <button id="enter">enter</button>
+  <p id="p2">..</p>
+
+  <input id="inputitem" placeholder="write something.." type="text">
+  <button id="additem">add item</button>
+  <button id="removeitem">remove item</button>
+  <ul id="list"></ul>
+
+  <div class="card1"></div>
+  <div class="card2"></div>
+  <div class="card3"></div>
+  <br><br>
+  <img src="2.jpg" alt="image1" id="images"><br>
+  <button id="changeimg">change image</button><br><br>
+
+  <textarea id="text" rows="20" cols="40" placeholder="type here.."></textarea>
+  <p id="">characters: <span id="countchar">0</span></p>
+
+  <button id="submit">submit</button> <br> <br>
+
+
+  <button id="addbox">
+    Add Box
+  </button>
+  <div id="container1"></div>
+
+  <br><br>
+  <input type="password" id="password" placeholder="Enter password">
+  <button id="togglePassword">Show/Hide</button>
+
+  <br><br>
+  <input type="text" id="todoInput" placeholder="Enter todo">
+  <button id="addTodo">Add Todo</button>
+  <ul id="todoList"></ul>
+
+  <script>
+    // 1. Change the text of <h1>
+    let h1 = document.getElementById("h1");
+    console.log(h1.innerText);
+    h1.innerText = "Welcome to DOM Manipulation";
+
+    // 2. Change button text when clicked
+    let btnn = document.getElementById("btn");
+    btnn.addEventListener("click", function () {
+      btnn.innerText = "Clicked Successfully";
+    });
+
+    //3. Create a button “Toggle Theme”. On each click, toggle between light mode and dark mode (change background and text color).
+    let toggle = document.getElementById("toggle")
+    toggle.addEventListener("click", function () {
+      document.body.classList.toggle("dark")
+    })
+
+    //4. Create a section (div) with some text. Add a button that toggles between Show and Hide for that section.
+    let hideorshow = document.getElementById("showBtn")
+    let p = document.getElementById("p")
+    hideorshow.addEventListener("click", function () {
+      p.classList.toggle("hide")
+    });
+
+    //5. Create a counter starting from 0. Add two buttons: Increase and Decrease (value should not go below 0).
+    let counter = 0
+    let count = document.getElementById("count")
+    let increase = document.getElementById("increase")
+    let decrease = document.getElementById("decrease")
+
+    increase.addEventListener("click", function () {
+      counter++
+      count.innerText = counter
+
+    })
+    decrease.addEventListener("click", function () {
+      if (counter > 0) {
+        counter--
+        count.innerText = counter
+      }
+    })
+
+    //6. Create an input box and a button. When the button is clicked, display the entered text inside a paragraph below.
+    let input = document.getElementById("in")
+    let enter = document.getElementById("enter")
+    let p2 = document.getElementById("p2")
+    enter.addEventListener("click", () => {
+      let inpvalue = input.value
+      console.log(inpvalue)
+      p2.innerText = inpvalue
+      //7. After displaying the input text, clear the input field automatically.
+      input.value = ""
+    });
+
+    //8. Create an input field and a button “Add Item”. Each click should add the input value as a new inside a .
+    let inputitem = document.getElementById("inputitem")
+    let additem = document.getElementById("additem")
+    let list = document.getElementById("list")
+    additem.addEventListener("click", () => {
+      let li = document.createElement("li")
+      li.innerText = inputitem.value
+      list.appendChild(li)
+      inputitem.value = "";
+    });
+
+    //9. Add a button “Remove Last Item” that removes the last list item from the list.
+    let removeitem = document.getElementById("removeitem")
+    removeitem.addEventListener("click", () => {
+      if (list.lastElementChild) {
+        list.removeChild(list.lastElementChild)
+      }
+    })
+
+    //10. Create 3 cards (divs). When a card is clicked, add an active class to the clicked card and remove the active class from the other cards.
+    let c1 = document.querySelector(".card1")
+    let c2 = document.querySelector(".card2")
+    let c3 = document.querySelector(".card3")
+    c1.addEventListener("click", () => {
+      console.log("c1 event is listening")
+      c1.classList.add("active")
+      c2.classList.remove("active")
+      c3.classList.remove("active")
+    })
+    c2.addEventListener("click", () => {
+      console.log("c2 event is listening")
+      c2.classList.add("active")
+      c1.classList.remove("active")
+      c3.classList.remove("active")
+    })
+    c3.addEventListener("click", () => {
+      console.log("c3 event is listening")
+      c3.classList.add("active")
+      c1.classList.remove("active")
+      c2.classList.remove("active")
+    })
+
+    //11. Display an image. On button click, change the image source to another image.
+    let imgg = document.getElementById("images")
+    let changeimg = document.getElementById("changeimg")
+    changeimg.addEventListener("click", () => {
+      imgg.src = "1.jpg"
+    })
+
+    //12. Create a textarea. Show a live character count below it as the user types.
+    let countchar = document.getElementById("countchar")
+    let text = document.getElementById("text")
+    text.addEventListener("input", () => {
+      countchar.innerText = text.value.length
+    })
+
+    //13. Create a button “Submit”. Once clicked, disable the button and change its text to “Submitted”.
+    let submit = document.getElementById("submit");
+    submit.addEventListener("click", function () {
+      submit.innerText = "submitted"
+      submit.disabled = true
+    });
+
+
+
+    //15. Create a button “Add Box”. On each click, add a new colored box (div) to the page.
+    let addbox = document.getElementById("addbox")
+    let container1 = document.getElementById("container1")
+    addbox.addEventListener("click", () => {
+      let box = document.createElement("div")
+      let delBtn = document.createElement("button")
+      delBtn.innerText = "delete"
+      box.appendChild(delBtn)
+      box.classList.add("box")
+      container1.appendChild(box)
+      //16. Each dynamically created box should have a Delete button. Clicking delete should remove only that box.
+      let boxes = document.querySelectorAll(".box")
+      console.log(boxes)
+      boxes.forEach(function (b) {
+        let deleteButton = b.getElementsByTagName("button")[0]
+        //17. When the mouse enters a box, change its background color. When the mouse leaves, revert the color.
+        b.addEventListener("mouseover", () => {
+          b.style.backgroundColor = "lightblue"
+        })
+        b.addEventListener("mouseout", () => {
+          b.style.backgroundColor = "magenta"
+        })
+        deleteButton.addEventListener("click", () => {
+          b.remove()
+        })
+      })
+
+    })
+
+    
+
+    //19. Create a password input and a Show/Hide button. Toggle between type='password' and type='text'.
+    let password = document.getElementById("password")
+    let togglePassword = document.getElementById("togglePassword")
+    togglePassword.addEventListener("click",()=>{
+        if(password.type === "password"){
+            password.type = "text"
+        }else{
+            password.type = "password"
+        }
+    })
+
+    //20. Build a mini todo list with input field and add button. Each todo should have mark as done and delete options.
+    let todoInput = document.getElementById("todoInput")
+    let addTodo = document.getElementById("addTodo")
+    let todoList = document.getElementById("todoList")
+
+    addTodo.addEventListener("click",()=>{
+      
+      let li = document.createElement("li")
+      li.innerText = todoInput.value
+      let markdone=document.createElement("button")
+      markdone.addEventListener("click",()=>{
+        li.style.textDecoration="line-through"
+      })
+      let deletebtn=document.createElement("button")
+      deletebtn.addEventListener("click",()=>{
+        li.remove()
+      })
+      markdone.innerText="mark as done"
+      deletebtn.innerText="delete"
+      li.appendChild(markdone)
+      li.appendChild(deletebtn)
+      todoList.appendChild(li)
+
+    })
+  </script>
+</body>
+
+</html>
